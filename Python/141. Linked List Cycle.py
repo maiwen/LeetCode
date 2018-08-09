@@ -49,3 +49,19 @@ class Solution(object):
             seen.add(head)
             head = head.next
         return False
+    def hasCycle3(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        slow, fast = head, head
+        while slow and fast:
+            slow = slow.next
+            fast = fast.next
+            if fast:
+                fast = fast.next
+            if fast == slow:
+                break
+        if fast and slow and fast == slow:
+            return True
+        return False

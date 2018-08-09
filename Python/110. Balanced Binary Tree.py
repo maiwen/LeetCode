@@ -42,7 +42,26 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
-class Solution(object):
+class Solution:
+    def __init__(self):
+        self.result = True
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        def maxdepth(root):
+            if not root:
+                return 0
+            l = maxdepth(root.left)
+            r = maxdepth(root.right)
+            if abs(l - r) > 1:
+                self.result = False
+            return max(l, r) + 1
+        maxdepth(root)
+        return self.result
+
+class Solution1:
     def parse(self, node, depth):
         if node == None:
             return depth, True

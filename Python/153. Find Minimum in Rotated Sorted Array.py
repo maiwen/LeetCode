@@ -34,3 +34,25 @@ class Solution(object):
             else:
                 hi = mid-1
         raise RuntimeError
+
+class Solution1(object):
+    def findMin(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        low, high = 0, n-1
+        while low < high:
+            mid = low + (high-low)//2
+            if nums[mid] > nums[mid+1]:
+                return nums[mid+1]
+            if nums[mid] > nums[0]:
+                low += 1
+            else:
+                high -= 1
+        return nums[0]
